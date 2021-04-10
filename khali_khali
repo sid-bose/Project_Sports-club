@@ -1,0 +1,41 @@
+ </table>
+    
+    <h2>Events created by Carrom Co-ordinator</h2>
+    <table class="content-table"  align="center" border="1px">
+        <thead>
+           <tr>
+            
+            <th>Date of Sports</th>
+            <th>Time of Sports</th>
+            <th>Match Description</th>
+          </tr>
+        </thead>
+    
+    <?php
+if ($result1->num_rows > 0) 
+    {
+        while($row = $result1->fetch_assoc())
+        {
+            if($row['sports_name']=="Carrom")
+            {
+ ?>         
+            <tr>
+                <td><?php echo $row['sports_date'];?></td>
+                <td><?php echo $row['sports_time'];?></td>
+                <td><?php echo $row['desc_event'];?></td>
+                
+            </tr> 
+       
+          
+          <button onclick="<?php approval($row['flag_var'])?>">Approve</button>
+          <?php
+        
+      }
+    }
+
+    }
+    else{
+        echo "no events available";
+    }
+    ?>
+    </table>
